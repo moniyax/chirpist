@@ -1,16 +1,33 @@
-<h2>Resend confirmation instructions</h2>
+<div class="d-flex justify-content-center">
+  <div style="
+  width: 40%;
+  ">
+    <div class="devise_errors">
+      <%= devise_error_messages! %>
+    </div>
+    <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: {method: :post, class: 'new_user mt-4 p-3 rounded', style: 'border: 1px solid #00968875'}) do |f| %>
+      <div class="mb-3 text-center" style="
+      font-size: 17px;
+          color: #009688;
+      ">Resend confirmation instructions
+      </div>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="form-group">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), placeholder: 'Email', class: "form-control", style: "font-size: 14px" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+      <div class="actions">
+        <%= f.submit "Resend confirmation instructions", class: "btn btn-primary w-100", style: "
+    border-color: #009688;
+    background: #009688;
+" %>
+      </div>
+    <% end %>
+
+    <div class="text-center mt-2" style="
+    font-size: 15px;
+    ">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

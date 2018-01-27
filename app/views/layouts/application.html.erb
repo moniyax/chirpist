@@ -43,7 +43,7 @@
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions" style="
         font-size: 14px;
         ">
-          <a class="dropdown-item" href="#">Settings and Privacy</a>
+          <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
           <a class="dropdown-item" href="#">Profile</a>
           <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
 
