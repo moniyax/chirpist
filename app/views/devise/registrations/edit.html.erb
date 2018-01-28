@@ -10,11 +10,29 @@
       font-size: 17px;
           color: #009688;
       ">
-        Edit <%= resource_name.to_s.humanize %>
+        Settings
       </div>
 
       <div class="form-group">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: "form-control", style: "font-size: 14px" %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">@</span>
+          </div>
+          <%= f.text_field :moniker, autofocus: true, placeholder: 'Moniker', class: "form-control", style: "font-size: 14px" %>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.email_field :email, autocomplete: "email", placeholder: 'Email', class: "form-control", style: "font-size: 14px" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_field :fullname, placeholder: 'Full Name', class: "form-control", style: "font-size: 14px" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :description, placeholder: 'Describe yourself', class: "form-control", style: "font-size: 14px" %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -51,11 +69,11 @@
     <div class="text-center mt-2" style="
     font-size: 15px;
     ">
-      <%= link_to "Back", :back %>
+      <%= link_to "Back", root_path %>
       <hr/>
-<div class="form-control border-0">
-      <span>Unhappy?</span> <%= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete, class: "btn btn-danger ml-1 mt-1"%>
-</div>
+      <div class="form-control border-0">
+        <span>Unhappy?</span> <%= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete, class: "btn btn-danger ml-1 mt-1" %>
+      </div>
     </div>
   </div>
 </div>
