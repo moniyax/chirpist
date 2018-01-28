@@ -9,38 +9,45 @@
         <p class="card-text"><%= current_user.description %></p>
       </div>
       <div class="d-flex mb-4 mt-2">
-        <a href="#" class="align-items-center card-link d-flex flex-column"><p class="my-0">Posts</p>5455</a>
-        <a href="#" class="align-items-center card-link d-flex flex-column"><p class="my-0">Followers</p>73224</a>
-        <a href="#" class="align-items-center card-link d-flex flex-column"><p class="my-0">Following</p>5333</a>
+        <a href="#" class="align-items-center card-link d-flex flex-column"><p class="my-0">Posts</p><%= current_user.posts.count %></a>
+        <a href="#" class="align-items-center card-link d-flex flex-column"><p class="my-0">Followers</p>0</a>
+        <a href="#" class="align-items-center card-link d-flex flex-column"><p class="my-0">Following</p>0</a>
       </div>
     </div>
   </div>
   <div class="col-6">
     <ul class="list-unstyled card pb-5">
+      <div style="
+      background: #0096880d;
+          border: 1px solid #00800033;
+      " class="rounded">
+        <%= form_for(@post, :html => {class: 'align-items-end d-flex flex-column input-group p-2 pb-0'}) do |f| %>
+          <% if @post.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <div class="input-group p-2 pb-0">
-        <input type="text" class="form-control" placeholder="What's happening?" style="
-        font-size: 14px;
-        ">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="16" viewBox="0 0 8 8">
-              <path d="M4.09 0c-.05 0-.1.04-.13.09l-.94 1.81c-.02.05-.07.09-.13.09h-1.41c-.83 0-1.5.67-1.5 1.5v4.41c0 .05.04.09.09.09h7.81c.05 0 .09-.04.09-.09v-5.81c0-.06-.04-.09-.09-.09h-.81c-.05 0-.1-.04-.13-.09l-.94-1.81c-.03-.05-.07-.09-.13-.09h-1.81zm-2.59 3c.28 0 .5.22.5.5s-.22.5-.5.5-.5-.22-.5-.5.22-.5.5-.5zm3.5 0c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 1c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z"
-                    transform="translate(-1 0)"/>
-            </svg>
-          </button>
-        </div>
+              <ul>
+                <% @post.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <%= f.text_area :text, class: "form-control w-100", placeholder: "What's happening?", style: "font-size: 14px;", rows: "1" %>
+          <%= f.submit class: "btn btn-outline-success mt-2", style: "font-size: 14px;"%>
+        <% end %>
+
       </div>
 
       <% @posts.each do |post| %>
-
         <li class="media mt-2 px-3 pb-2" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);">
           <%= image_tag 'egg_64.png', size: '40x40', class: 'mr-3 rounded-circle' %>
           <div class="media-body">
             <div><span class="mt-0 mb-1 h6" style="
             font-size: 14px;
-            ">Sarah Hookson</span>
-              <span class="text-muted">@sarahooks . 2m</span></div>
+            "><%= post.user.fullname %></span>
+              <span class="text-muted">@<%= post.user.moniker %> . 2m</span></div>
             <%= post.text %>
             <div class="actions mt-3 d-flex flex-row" style="
             font-size: 12px;
@@ -51,7 +58,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 8 8">
                   <path d="M.09 0c-.06 0-.09.04-.09.09v5.81c0 .05.04.09.09.09h5.91l2 2v-7.91c0-.06-.04-.09-.09-.09h-7.81z" transform="translate(0 -1.2)"/>
                 </svg>
-                <div class="ml-1">11</div>
+                <div class="ml-1">0</div>
               </a>
               <a href="#" class="align-items-end d-flex flex-row mr-4" style="
               color: #666;
@@ -59,7 +66,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8">
                   <path d="M6 0v1h-5c-.55 0-1 .45-1 1v1h1v-1h5v1l2-1.5-2-1.5zm-4 4l-2 1.5 2 1.5v-1h5c.55 0 1-.45 1-1v-1h-1v1h-5v-1z" transform="translate(0 -0.5)"/>
                 </svg>
-                <div class="ml-1">45</div>
+                <div class="ml-1">0</div>
               </a>
               <a href="#" class="align-items-end d-flex flex-row mr-4" style="
               color: #666;
@@ -68,7 +75,7 @@
                   <path d="M2 0c-.55 0-1.04.23-1.41.59-.36.36-.59.85-.59 1.41 0 .55.23 1.04.59 1.41l3.41 3.41 3.41-3.41c.36-.36.59-.85.59-1.41 0-.55-.23-1.04-.59-1.41-.36-.36-.85-.59-1.41-.59-.55 0-1.04.23-1.41.59-.36.36-.59.85-.59 1.41 0-.55-.23-1.04-.59-1.41-.36-.36-.85-.59-1.41-.59z"
                   />
                 </svg>
-                <div class="ml-1">11</div>
+                <div class="ml-1">0</div>
               </a>
             </div>
           </div>
@@ -84,15 +91,15 @@
           <span class="small"><a href="#">Refresh</a> · <a href="#">View all</a></span></div>
       </div>
       <ul class="list-group list-group-flush">
-        <% 4.times do %>
+        <% User.last(5).each do |u| %>
           <li class="list-group-item">
             <div class="media">
               <%= image_tag 'egg_64.png', size: '40x40', class: 'mr-3 rounded-circle' %>
               <div class="media-body">
                 <h6 class="h mb-0 mt-0" style="
                 font-size: 14px;
-                ">Peter Reading</h6>
-                <button type="button" class="btn btn-outline-primary py-0" style="
+                "><%= u.fullname %></h6>
+                <button type="button" class="btn btn-outline-primary py-0 mt-2" style="
                 border-radius: 1rem;
                     font-size: 10px;
 
