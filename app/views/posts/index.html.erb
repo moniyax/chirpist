@@ -25,7 +25,6 @@
           <% if @post.errors.any? %>
             <div id="error_explanation">
               <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
               <ul>
                 <% @post.errors.full_messages.each do |message| %>
                   <li><%= message %></li>
@@ -44,11 +43,16 @@
         <li class="media mt-2 px-3 pb-2" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);">
           <%= image_tag 'egg_64.png', size: '40x40', class: 'mr-3 rounded-circle' %>
           <div class="media-body">
-            <div><span class="mt-0 mb-1 h6" style="
+            <div>
+              <span class="mt-0 mb-1 h6" style="
             font-size: 14px;
             "><%= post.user.fullname %></span>
-              <span class="text-muted">@<%= post.user.moniker %> . 2m</span></div>
+              <span class="text-muted">@<%= post.user.moniker %> . 2m</span>
+            </div>
             <%= post.text %>
+            <div>
+              <%= image_tag 'sucks.jpg', class: "img-fluid rounded mt-2" %>
+            </div>
             <div class="actions mt-3 d-flex flex-row" style="
             font-size: 12px;
             ">
