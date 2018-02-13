@@ -53,9 +53,6 @@
               <span class="text-muted">@<%= post.user.moniker %> . 2m</span>
             </div>
             <%= post.text %>
-            <div>
-              <%= image_tag '', class: "img-fluid rounded mt-2" %>
-            </div>
             <div class="actions mt-3 d-flex flex-row" style="
             font-size: 12px;
             ">
@@ -101,7 +98,7 @@
         <% User.where.not(id: current_user.id).last(6).each do |u| %>
           <li class="list-group-item">
             <div class="media">
-              <%= image_tag 'egg_64.png', size: '40x40', class: 'mr-3 rounded-circle' %>
+              <%= image_tag u.avatar_url(120), size: '40x40', class: 'mr-3 rounded-circle' %>
               <div class="media-body">
                 <h6 class="h mb-0 mt-0" style="
                 font-size: 14px;
