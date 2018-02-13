@@ -59,6 +59,7 @@ $(function () {
 
                 var img = $('img');
                 img.attr('src', '<%= ENV['S3_REDIRECT_ENDPOINT'] %>' + '/128x128/' + key);
+                console.log("ENV['S3_REDIRECT_ENDPOINT'] >", ENV['S3_REDIRECT_ENDPOINT']);
                 img.show();
             },
             fail: function (e, data) {
