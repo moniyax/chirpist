@@ -1,7 +1,10 @@
 <div class="row">
   <div class="col-3">
     <div class="align-items-center card">
-      <%= image_tag 'egg_128.png', class: 'mt-2 rounded-circle' %>
+      <%= image_tag current_user.avatar_url(384), class: 'mt-2 rounded-circle', style: "
+    width: 128px;
+    height: 128px;
+" %>
       <h6 class="mb-0 mt-2"><%= current_user.fullname %></h6>
       <p>@<%= current_user.moniker %></p>
 
@@ -41,7 +44,7 @@
 
       <% @posts.each do |post| %>
         <li class="media mt-2 px-3 pb-2" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);">
-          <%= image_tag 'egg_64.png', size: '40x40', class: 'mr-3 rounded-circle' %>
+          <%= image_tag post.user.avatar_url(120), size: '40x40', class: 'mr-3 rounded-circle' %>
           <div class="media-body">
             <div>
               <span class="mt-0 mb-1 h6" style="
@@ -51,7 +54,7 @@
             </div>
             <%= post.text %>
             <div>
-              <%= image_tag 'sucks.jpg', class: "img-fluid rounded mt-2" %>
+              <%= image_tag '', class: "img-fluid rounded mt-2" %>
             </div>
             <div class="actions mt-3 d-flex flex-row" style="
             font-size: 12px;

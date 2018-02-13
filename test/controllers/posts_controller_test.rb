@@ -23,7 +23,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post posts_url, params: { post: { text: @post.text, user_id: @post.user_id } }
     end
 
-    assert_redirected_to post_url(Post.last)
+    assert_redirected_to root_url
   end
 
   test "should show post" do

@@ -6,6 +6,7 @@
 #
 one:
   email: hey
+  avatar_key: 'uploads/random/hi.jpg'
 
 two:
   email: hi
