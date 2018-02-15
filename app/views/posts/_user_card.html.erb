@@ -1,0 +1,17 @@
+<div class="align-items-center card">
+  <%= image_tag user.avatar_url(384), class: 'mt-2 rounded-circle', style: "
+    width: 128px;
+    height: 128px;
+" %>
+  <h6 class="mb-0 mt-2"><%= user.fullname %></h6>
+  <p>@<%= user.moniker %></p>
+
+  <div class="px-3 w-100">
+    <p class="card-text"><%= user.description %></p>
+  </div>
+  <div class="d-flex mb-4 mt-2">
+    <a href="#" class="align-items-center card-link d-flex flex-column" style="color: #009688;"><p class="my-0">Posts</p><%= user.posts.count %></a>
+    <a href="#" class="align-items-center card-link d-flex flex-column" style="color: #009688;"><p class="my-0">Followers</p>0</a>
+    <a href="#" class="align-items-center card-link d-flex flex-column" style="color: #009688;"><p class="my-0">Following</p>0</a>
+  </div>
+</div>

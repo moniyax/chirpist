@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.order('created_at DESC')
-    @post = current_user.posts.new
   end
 
   # GET /posts/1
@@ -63,7 +62,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def user_timeline
+    @user = User.find_by(moniker: params[:username])
+    @posts = @user.posts
+  end
+
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
