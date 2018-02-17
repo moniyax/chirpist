@@ -4,8 +4,8 @@
     <div>
       <span class="mt-0 mb-1 h6" style="
               font-size: 14px;
-              "><%= link_to(post.user.fullname, timeline_path(post.user.moniker)) %></span>
-      <span class="text-muted"><%= link_to('@' + post.user.moniker, timeline_path(post.user.moniker)) %> . 2m</span>
+              "><%= link_to(post.user.fullname, timeline_path(post.user.moniker), style: "color: #009688;") %></span>
+      <span class="text-muted"><%= link_to('@' + post.user.moniker, timeline_path(post.user.moniker), style: "color: #009688;") %> . 2m</span>
     </div>
     <%= post.text %>
     <div class="actions mt-3 d-flex flex-row" style="

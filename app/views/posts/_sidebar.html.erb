@@ -1,12 +1,15 @@
 <div class="card">
   <div class="card-body">
     <div><span class="h6">Who to follow</span> .
-      <span class="small"><a href="#" style="color: #009688;">Refresh</a> · <a href="#" style="color: #009688;">View all</a></span>
+      <span class="small">
+        <a href="#" style="color: #009688;">Refresh</a> ·
+        <%= link_to "View all", who_to_follow_relationships_path, style: "color: #009688;" %>
+      </span>
     </div>
   </div>
   <ul class="list-group list-group-flush">
     <% user.who_to_follow.each do |u| %>
-      <%= render 'who_to_follow', user_to_follow: u %>
+      <%= render 'posts/who_to_follow_sidebar', user_to_follow: u %>
     <% end %>
   </ul>
 </div>

@@ -7,18 +7,20 @@ class RelationshipsController < ApplicationController
     @relationships = Relationship.all
   end
 
+  def who_to_follow
+    @to_follows = current_user.who_to_follow
+  end
+
   # POST /relationships
   # POST /relationships.json
   def create
     @relationship = Relationship.new(relationship_params)
 
     respond_to do |format|
+      # TODO: Handle relationship creation error
       if @relationship.save
         format.html { redirect_to :back }
         format.json { render :show, status: :created, location: @relationship }
-      else
-        format.html { render :new }
-        format.json { render json: @relationship.errors, status: :unprocessable_entity }
       end
     end
   end

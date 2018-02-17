@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-3">
+  </div>
+  <div class="col-6">
+    <ul class="list-unstyled card pb-5">
+      <h4 class="m-4">Who to follow</h4>
+
+      <% @to_follows.each do |to_follow| %>
+        <%= render 'to_follow', to_follow: to_follow %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-3">
+    <%= render 'posts/sidebar', user: current_user %>
+  </div>
+</div>

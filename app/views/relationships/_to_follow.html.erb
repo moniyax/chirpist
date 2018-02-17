@@ -1,0 +1,19 @@
+<li class="media mt-2 px-3 pb-2" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);">
+  <%= image_tag to_follow.avatar_url(120), size: '40x40', class: 'mr-3 rounded-circle' %>
+  <div class="media-body">
+    <div>
+      <span class="mt-0 mb-1 h6" style="
+      font-size: 14px;
+      "><%= link_to(to_follow.fullname, timeline_path(to_follow.moniker), style: "color: #009688;") %></span>
+      <%= link_to('@' + to_follow.moniker, timeline_path(to_follow.moniker), style: "color: #009688;") %>
+    </div>
+
+    <%= to_follow.description %>
+
+  </div>
+  <%= form_for Relationship.new(user_id: to_follow.id, follower_id: current_user.id) do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :follower_id %>
+    <%= f.submit("Follow", class: "btn btn-outline-primary py-0 mt-2", style: "border-radius: 1rem; font-size: 13px;") %>
+  <% end %>
+</li>
