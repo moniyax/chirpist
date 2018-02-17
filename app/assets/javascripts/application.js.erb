@@ -60,6 +60,8 @@ document.addEventListener("turbolinks:load", function() {
                 var img = $('img');
                 img.attr('src', 'http://lambda-resizr.s3-website.eu-west-2.amazonaws.com' + '/128x128/' + key);
                 img.show();
+
+                $('#user_avatar_key').val('')
             },
             fail: function (e, data) {
                 submitButton.prop('disabled', false);
