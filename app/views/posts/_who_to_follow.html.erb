@@ -1,0 +1,17 @@
+<li class="list-group-item">
+  <div class="media">
+    <%= image_tag user_to_follow.avatar_url(120), size: '40x40', class: 'mr-3 rounded-circle' %>
+    <div class="media-body">
+      <h6 class="h mb-0 mt-0" style="
+      font-size: 14px;
+      "><%= user_to_follow.fullname %></h6>
+
+      <%= form_for Relationship.new(user_id: user_to_follow.id, follower_id: current_user.id) do |f| %>
+        <%= f.hidden_field :user_id %>
+        <%= f.hidden_field :follower_id %>
+        <%= f.submit("Follow", class: "btn btn-outline-primary py-0 mt-2", style: "border-radius: 1rem; font-size: 10px;") %>
+      <% end %>
+
+    </div>
+  </div>
+</li>

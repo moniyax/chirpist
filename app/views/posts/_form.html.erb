@@ -1,22 +1,19 @@
-<%= form_for(post) do |f| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<div style="
+background: #0096880d;
+    border: 1px solid #00800033;
+" class="rounded">
+  <%= form_for(post, :html => {class: 'align-items-end d-flex flex-column input-group p-2 pb-0'}) do |f| %>
+    <% if post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <ul>
+          <% post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.text_area :text, class: "form-control w-100", placeholder: "What's happening?", style: "font-size: 14px;", rows: "1" %>
+    <%= f.submit class: "btn btn-outline-success mt-2", style: "font-size: 14px;" %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :text %>
-    <%= f.text_field :text %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
