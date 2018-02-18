@@ -9,5 +9,5 @@ Rails.application.routes.draw do
       get 'followings'
     end
   end
-  get '/:username', to: 'posts#user_timeline', as: :timeline
+  get '/:username', to: 'posts#user_timeline', as: :user_timeline
 end

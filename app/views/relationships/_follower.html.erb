@@ -4,8 +4,8 @@
     <div>
       <span class="mt-0 mb-1 h6" style="
       font-size: 14px;
-      "><%= link_to(follower.fullname, timeline_path(follower.moniker), style: "color: #009688;") %></span>
-      <%= link_to('@' + follower.moniker, timeline_path(follower.moniker), style: "color: #009688;") %>
+      "><%= link_to(follower.fullname, user_timeline_path(follower.moniker), style: "color: #009688;") %></span>
+      <%= link_to('@' + follower.moniker, user_timeline_path(follower.moniker), style: "color: #009688;") %>
     </div>
 
     <%= follower.description %>
