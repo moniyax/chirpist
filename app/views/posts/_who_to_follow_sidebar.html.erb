@@ -4,12 +4,12 @@
     <div class="media-body">
       <h6 class="h mb-0 mt-0" style="
       font-size: 14px;
-      "><%= user_to_follow.fullname %></h6>
+      "><%= link_to(user_to_follow.fullname, user_timeline_path(user_to_follow.moniker), style: "color: #009688;") %></h6>
 
       <%= form_for Relationship.new(user_id: user_to_follow.id, follower_id: current_user.id) do |f| %>
         <%= f.hidden_field :user_id %>
         <%= f.hidden_field :follower_id %>
-        <%= f.submit("Follow", class: "btn btn-outline-primary py-0 mt-2", style: "border-radius: 1rem; font-size: 10px;") %>
+        <%= f.submit("Follow", class: "btn btn-outline-success py-0 mt-2", style: "border-radius: 1rem; font-size: 10px;") %>
       <% end %>
 
     </div>
