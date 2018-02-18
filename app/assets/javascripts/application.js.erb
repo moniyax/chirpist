@@ -18,7 +18,14 @@
 
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbolinks:load", function () {
+    $('textarea').each(function () {
+        this.setAttribute('style', $(this).attr('style') + 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+    }).on('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 'px';
+    });
+
     $('.directUpload').find("input:file").each(function (i, elem) {
         var fileInput = $(elem);
         var form = $(fileInput.parents('form:first'));
