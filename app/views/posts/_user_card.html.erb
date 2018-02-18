@@ -14,9 +14,10 @@
       <p class="my-0">Posts</p><%= user.posts.count %>
     <% end %>
     <%= link_to followers_relationships_url, class: "align-items-center card-link d-flex flex-column", style: "color: #009688;" do %>
-      <p class="my-0">Followers</p><%= user.followers.count  %>
+      <p class="my-0">Followers</p><%= user.followers.count %>
     <% end %>
-    <a href="#" class="align-items-center card-link d-flex flex-column" style="color: #009688;">
-      <p class="my-0">Following</p><%= user.followings.count %></a>
+    <%= link_to followings_relationships_url, class: "align-items-center card-link d-flex flex-column", style: "color: #009688;" do %>
+      <p class="my-0">Following</p><%= user.followings.count %>
+    <% end %>
   </div>
 </div>

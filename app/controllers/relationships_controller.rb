@@ -1,5 +1,4 @@
 class RelationshipsController < ApplicationController
-  before_action :set_relationship, only: [:show, :edit, :update, :destroy]
 
   # GET /relationships
   # GET /relationships.json
@@ -15,6 +14,10 @@ class RelationshipsController < ApplicationController
     @followers = current_user.followers
   end
 
+  def followings
+    @followings = current_user.followings
+  end
+
   # POST /relationships
   # POST /relationships.json
   def create
@@ -23,8 +26,8 @@ class RelationshipsController < ApplicationController
     respond_to do |format|
       # TODO: Handle relationship creation error
       if @relationship.save
-        format.html { redirect_to :back }
-        format.json { render :show, status: :created, location: @relationship }
+        format.html {redirect_to :back}
+        format.json {render :show, status: :created, location: @relationship}
       end
     end
   end
@@ -32,21 +35,20 @@ class RelationshipsController < ApplicationController
   # DELETE /relationships/1
   # DELETE /relationships/1.json
   def destroy
+    # TODO: Handle relationship destroy error
+
+  @relationship = Relationship.find_by!(relationship_params)
     @relationship.destroy
+
     respond_to do |format|
-      format.html { redirect_to relationships_url, notice: 'Relationship was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to :back}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_relationship
-      @relationship = Relationship.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def relationship_params
-      params.require(:relationship).permit(:follower_id, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def relationship_params
+    params.require(:relationship).permit(:follower_id, :user_id)
+  end
 end

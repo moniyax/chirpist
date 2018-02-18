@@ -1,0 +1,18 @@
+<li class="media mt-2 px-3 pb-2" style="border-bottom: 1px solid rgba(0, 0, 0, 0.125);">
+  <%= image_tag following.avatar_url(120), size: '40x40', class: 'mr-3 rounded-circle' %>
+  <div class="media-body">
+    <div>
+      <span class="mt-0 mb-1 h6" style="
+      font-size: 14px;
+      "><%= link_to(following.fullname, timeline_path(following.moniker), style: "color: #009688;") %></span>
+      <%= link_to('@' + following.moniker, timeline_path(following.moniker), style: "color: #009688;") %>
+    </div>
+
+    <%= following.description %>
+  </div>
+  <%= form_for Relationship.find_by!(user_id: following.id, follower_id: current_user.id), method: :delete do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field :follower_id %>
+    <%= f.submit("Unfollow", class: "btn btn-outline-danger py-0 mt-2", style: "border-radius: 1rem; font-size: 13px;") %>
+  <% end %>
+</li>
