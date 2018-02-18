@@ -60,7 +60,7 @@
         font-size: 14px;
         ">
           <%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %>
-          <a class="dropdown-item" href="#">Profile</a>
+          <%= link_to "Profile", user_timeline_path(current_user.moniker), class: "dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, :method => :delete, class: "dropdown-item" %>
 
       </div>
