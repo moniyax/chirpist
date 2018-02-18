@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:index, :create, :destroy] do
     collection do
       get 'who_to_follow'
+      get 'followers'
     end
   end
   get '/:username', to: 'posts#user_timeline', as: :timeline

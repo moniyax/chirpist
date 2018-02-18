@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-3">
+    <%= render 'posts/user_card', user: current_user %>
+  </div>
+  <div class="col-6">
+    <ul class="list-unstyled card pb-5">
+      <h4 class="m-4">Followers</h4>
+
+      <% @followers.each do |follower| %>
+        <%= render 'follower', follower: follower %>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-3">
+    <%= render 'posts/sidebar', user: current_user %>
+  </div>
+</div>

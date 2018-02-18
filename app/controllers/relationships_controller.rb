@@ -11,6 +11,10 @@ class RelationshipsController < ApplicationController
     @to_follows = current_user.who_to_follow
   end
 
+  def followers
+    @followers = current_user.followers
+  end
+
   # POST /relationships
   # POST /relationships.json
   def create
