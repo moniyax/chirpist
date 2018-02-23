@@ -1,6 +1,6 @@
 <% unless post.liked_by_user?(current_user) %>
   <%= button_to(Like.new, {class: "btn pb-0 align-items-end d-flex flex-row mr-4", style: "font-size: 13px;color: #666;", params: {'like[user_id]' => current_user.id, 'like[post_id]' => post.id}}) do %>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8" class="mr-1" style="<%= action_icon_color(post, current_user, '#009688') %>">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8" class="mr-1" style="<%= action_icon_color(:like, post, current_user, '#009688') %>">
       <path d="M2 0c-.55 0-1.04.23-1.41.59-.36.36-.59.85-.59 1.41 0 .55.23 1.04.59 1.41l3.41 3.41 3.41-3.41c.36-.36.59-.85.59-1.41 0-.55-.23-1.04-.59-1.41-.36-.36-.85-.59-1.41-.59-.55 0-1.04.23-1.41.59-.36.36-.59.85-.59 1.41 0-.55-.23-1.04-.59-1.41-.36-.36-.85-.59-1.41-.59z"
       />
     </svg>
@@ -8,7 +8,7 @@
   <% end %>
 <% else %>
   <%= button_to(Like.find_by(user: current_user, post: post), {method: :delete, class: "btn pb-0 align-items-end d-flex flex-row mr-4", style: "font-size: 13px;color: #666;"}) do %>
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8" class="mr-1" style="<%= action_icon_color(post, current_user, '#009688') %>">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8" class="mr-1" style="<%= action_icon_color(:like, post, current_user, '#009688') %>">
       <path d="M2 0c-.55 0-1.04.23-1.41.59-.36.36-.59.85-.59 1.41 0 .55.23 1.04.59 1.41l3.41 3.41 3.41-3.41c.36-.36.59-.85.59-1.41 0-.55-.23-1.04-.59-1.41-.36-.36-.85-.59-1.41-.59-.55 0-1.04.23-1.41.59-.36.36-.59.85-.59 1.41 0-.55-.23-1.04-.59-1.41-.36-.36-.85-.59-1.41-.59z"
       />
     </svg>
