@@ -6,7 +6,8 @@
       font-size: 14px;
       "><%= link_to(post.user.fullname, user_timeline_path(post.user.moniker), style: "color: #009688;") %></span>
       <span class="text-muted"><%= link_to('@' + post.user.moniker, user_timeline_path(post.user.moniker), style: "color: #009688;") %>
-        . 2m</span>
+        . <%= time_ago_in_words(post.created_at) %>
+</span>
     </div>
     <%= post.text %>
     <div class="actions mt-3 d-flex flex-row" style="
