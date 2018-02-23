@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :followers, through: :relationships
   has_many :inverse_relationships, class_name: 'Relationship', foreign_key: :follower_id
   has_many :followings, through: :inverse_relationships
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
 
   validates :moniker, presence: true, uniqueness: true
   validates :fullname, presence: true

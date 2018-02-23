@@ -3,39 +3,28 @@
   <div class="media-body">
     <div>
       <span class="mt-0 mb-1 h6" style="
-              font-size: 14px;
-              "><%= link_to(post.user.fullname, user_timeline_path(post.user.moniker), style: "color: #009688;") %></span>
-      <span class="text-muted"><%= link_to('@' + post.user.moniker, user_timeline_path(post.user.moniker), style: "color: #009688;") %> . 2m</span>
+      font-size: 14px;
+      "><%= link_to(post.user.fullname, user_timeline_path(post.user.moniker), style: "color: #009688;") %></span>
+      <span class="text-muted"><%= link_to('@' + post.user.moniker, user_timeline_path(post.user.moniker), style: "color: #009688;") %>
+        . 2m</span>
     </div>
     <%= post.text %>
     <div class="actions mt-3 d-flex flex-row" style="
     font-size: 12px;
     ">
-      <a href="#" class="align-items-end d-flex flex-row mr-4" style="
-      color: #666;
-      ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 8 8">
+      <%= button_to({action: "create"}, {class: "btn pb-0 align-items-end d-flex flex-row mr-4", style: "font-size: 13px;color: #666;"}) do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 8 8" class="mr-1">
           <path d="M.09 0c-.06 0-.09.04-.09.09v5.81c0 .05.04.09.09.09h5.91l2 2v-7.91c0-.06-.04-.09-.09-.09h-7.81z" transform="translate(0 -1.2)"/>
         </svg>
-        <div class="ml-1">0</div>
-      </a>
-      <a href="#" class="align-items-end d-flex flex-row mr-4" style="
-      color: #666;
-      ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8">
+        555
+      <% end %>
+      <%= button_to({action: "create"}, {class: "btn pb-0 align-items-end d-flex flex-row mr-4", style: "font-size: 13px;color: #666;"}) do %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8" class="mr-1">
           <path d="M6 0v1h-5c-.55 0-1 .45-1 1v1h1v-1h5v1l2-1.5-2-1.5zm-4 4l-2 1.5 2 1.5v-1h5c.55 0 1-.45 1-1v-1h-1v1h-5v-1z" transform="translate(0 -0.5)"/>
         </svg>
-        <div class="ml-1">0</div>
-      </a>
-      <a href="#" class="align-items-end d-flex flex-row mr-4" style="
-      color: #666;
-      ">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 8 8">
-          <path d="M2 0c-.55 0-1.04.23-1.41.59-.36.36-.59.85-.59 1.41 0 .55.23 1.04.59 1.41l3.41 3.41 3.41-3.41c.36-.36.59-.85.59-1.41 0-.55-.23-1.04-.59-1.41-.36-.36-.85-.59-1.41-.59-.55 0-1.04.23-1.41.59-.36.36-.59.85-.59 1.41 0-.55-.23-1.04-.59-1.41-.36-.36-.85-.59-1.41-.59z"
-          />
-        </svg>
-        <div class="ml-1">0</div>
-      </a>
+        555
+      <% end %>
+      <%= render 'like_button', post: post %>
     </div>
   </div>
 </li>
