@@ -9,7 +9,7 @@
         . <%= time_ago_in_words(post.created_at) %>
 </span>
     </div>
-    <%= post.text %>
+    <%= linkify_mentions(post.text).html_safe %>
     <div class="actions mt-3 d-flex flex-row" style="
     font-size: 12px;
     ">

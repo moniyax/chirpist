@@ -11,8 +11,9 @@ class User < ApplicationRecord
   has_many :followings, through: :inverse_relationships
   has_many :likes
   has_many :liked_posts, through: :likes, source: :post
-has_many :reposts
+  has_many :reposts
   has_many :reposted_posts, through: :reposts, source: :post
+  has_many :mentions
 
   validates :moniker, presence: true, uniqueness: true
   validates :fullname, presence: true
